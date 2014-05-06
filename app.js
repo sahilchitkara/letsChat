@@ -35,7 +35,7 @@ if('development' == app.get('env')) {
 
 // db connection
 if(app.get('env')=='production'){
-  mongoose.connect('mongo novus.modulusmongo.net:27017/ho2qyxyM -u sahil -p sahil',function(err) {
+  mongoose.connect('mongodb://sahil:sahil@novus.modulusmongo.net:27017/ho2qyxyM',function(err) {
     if(err) throw err;
     console.log('db connected: ' + ' modulusmongo chatRoomDB');
   });
