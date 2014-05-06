@@ -61,7 +61,19 @@
           var geocode = $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&sensor=true&components=postal_town');
           geocode.success(function(response) {
             if(response.status = "OK") {
-              $scope.user.location = response.results[response.results.length - 1].formatted_address;
+              for (var i=0; i<response.results[0].address_components.length; i++) {
+                for (var b=0;b<response.results[0].address_components[i].types.length;b++) {
+
+                  //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                  if (response.results[0].address_components[i].types[b] == "locality") {
+                    //this is the object you are looking for
+                    city= response.results[0].address_components[i];
+                    break;
+                  }
+                }
+              }
+              //city data
+              $scope.user.location = city.long_name;
             }
           });
         },function(error) {
