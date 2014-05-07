@@ -14,12 +14,11 @@ exports.listLocations = function(req, res){
 };
 
 exports.createLocation=function(req,res,next){
-  console.log(req.user);
   Location.findOne({name:req.body.user.location},function(err,location){
     if(err) res.send({status:'Error'});
     if(!location){
       console.log("no location Found,creating location");
-      Location.create({ name: req.body.user.location },function(err,user){
+      Location.create({ name: req.body.user.location },function(err,locationData){
         if(err) res.send({status:'Error'});
         else{
           next();
