@@ -10,7 +10,7 @@
     "ejs": "*",
     "bower": "*",
     "mongoose": "*",
-    "socket.io":"*"
+    "socket.io":"*",
     "passport":"*",
     "passport-local":"*"
   }

@@ -10,8 +10,6 @@ var http = require('http');
 var path = require('path')
   , mongoose = require('mongoose')
   , oauth = require('./routes/oauth.js')
-  , passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
 app = express();
 
 // all environments
@@ -25,8 +23,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname,'public')));
 
@@ -71,11 +67,3 @@ var io = require('socket.io').listen(server);
 global.io = io;
 require("./socket/socketIo")();
 
-//passport user serialize and deserialize
-passport.serializeUser(function(user,done) {
-  done(null,user);
-});
-
-passport.deserializeUser(function(user,done) {
-  done(null,user);
-});

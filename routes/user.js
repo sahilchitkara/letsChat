@@ -19,10 +19,7 @@ exports.login = function(req, res){
         }
       });
     }else{
-      req.login(user, function(err) {
-        if (err) { console.log(err);return next(err); }
-        return res.send({status:"success",msg:"chat",userDetails:{user:user,location:req.body.user.location}});
-      })
+      res.send({status:"success",msg:"chat",userDetails:{user:user,location:req.body.user.location}});
     }
   })
 };
