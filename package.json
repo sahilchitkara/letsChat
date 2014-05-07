@@ -11,5 +11,7 @@
     "bower": "*",
     "mongoose": "*",
     "socket.io":"*"
+    "passport":"*",
+    "passport-local":"*"
   }
 }
